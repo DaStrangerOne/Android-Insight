@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base theme colors -->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorAccent">#FF4081</color>
+    
+    <color name="fab_stroke">#FFFFFF</color>
+    
+    <!-- Security severity colors -->
+    <color name="chip_severity_critical">#B71C1C</color>
+    <color name="chip_severity_high">#F57C00</color>
+    <color name="chip_severity_medium">#FBC02D</color>
+</resources>

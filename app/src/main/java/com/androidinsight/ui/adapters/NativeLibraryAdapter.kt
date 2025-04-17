@@ -35,7 +35,7 @@ class NativeLibraryAdapter : ListAdapter<NativeLibrary, NativeLibraryAdapter.Vie
                 // Show exported functions if available
                 if (library.exportedFunctions.isNotEmpty()) {
                     exportedFunctionsContainer.visibility = View.VISIBLE
-                    val functionsText = library.exportedFunctions.joinToString("\n")
+                    library.exportedFunctions.joinToString("\n")
                     // TODO: Implement proper RecyclerView for exported functions
                 } else {
                     exportedFunctionsContainer.visibility = View.GONE

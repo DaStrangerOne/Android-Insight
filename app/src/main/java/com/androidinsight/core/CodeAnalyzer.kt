@@ -508,7 +508,7 @@ class CodeAnalyzer(private val context: Context) {
                     val flags = line.substringAfter("FLAGS").trim()
                     if (flags.contains("BIND_NOW")) dynamicLinking.add("SECURITY_FLAG:RELRO")
                     if (flags.contains("PIE")) dynamicLinking.add("SECURITY_FLAG:PIE")
-                }dd(libName)
+                }
                 }
             }
         }
@@ -605,11 +605,11 @@ class CodeAnalyzer(private val context: Context) {
     }
 
     private fun performSecurityAnalysis(libFile: File): SecurityAnalysis {
-        val hasAntiDebug = detectAntiDebugging(libFile)
+        val hasAntiDebug = detectAntiDebugTechniques(libFile)
         val hasRootDetection = detectRootDetection(libFile)
         val hasObfuscation = detectObfuscation(libFile)
-        val hasEmulator = detectEmulatorChecks(libFile)
-        val hasTamperDetection = detectTamperingChecks(libFile)
+        val hasEmulator = detectEmulator(libFile)
+        val hasTamperDetection = detectTamperProtection(libFile)
         val cryptoOps = analyzeCryptoOperations(libFile)
         val vulnerabilities = detectVulnerabilities(libFile)
         
@@ -625,7 +625,7 @@ class CodeAnalyzer(private val context: Context) {
         )
     }
     
-    private fun detectAntiDebugging(libFile: File): Boolean {
+    private fun detectAntiDebugTechniques(libFile: File): Boolean {
         val process = ProcessBuilder("objdump", "-d", "--no-show-raw-insn", libFile.absolutePath).start()
         return process.inputStream.bufferedReader().useLines { lines ->
             lines.any { line ->
@@ -662,7 +662,7 @@ class CodeAnalyzer(private val context: Context) {
         }
     }
     
-    private fun detectEmulatorChecks(libFile: File): Boolean {
+    private fun detectEmulator(libFile: File): Boolean {
         val process = ProcessBuilder("strings", libFile.absolutePath).start()
         return process.inputStream.bufferedReader().useLines { lines ->
             lines.any { line ->
@@ -674,7 +674,7 @@ class CodeAnalyzer(private val context: Context) {
         }
     }
     
-    private fun detectTamperingChecks(libFile: File): Boolean {
+    private fun detectTamperProtection(libFile: File): Boolean {
         val process = ProcessBuilder("objdump", "-d", "--no-show-raw-insn", libFile.absolutePath).start()
         return process.inputStream.bufferedReader().useLines { lines ->
             lines.any { line ->
@@ -933,6 +933,130 @@ class CodeAnalyzer(private val context: Context) {
         return vulnerabilities
     }
 
+    private fun detectMemoryCorruption(content: ByteArray): Vulnerability? {
+        val memoryCorruptionPatterns = listOf(
+            "memcpy" to "Unsafe memory copy operations",
+            "memmove" to "Unsafe memory move operations",
+            "malloc" to "Dynamic memory allocation without bounds check",
+            "realloc" to "Memory reallocation without size validation"
+        )
+        
+        for ((pattern, description) in memoryCorruptionPatterns) {
+            if (content.contains(pattern.toByteArray())) {
+                return Vulnerability(
+                    type = VulnerabilityType.BUFFER_OVERFLOW,
+                    severity = Severity.HIGH,
+                    description = "Memory corruption risk: $description",
+                    location = "Native library",
+                    recommendation = "Implement proper bounds checking and use safer memory management functions"
+                )
+            }
+        }
+        
+        return null
+    }
+    
+    private fun detectBufferOverflow(content: ByteArray): Vulnerability? {
+        val bufferOverflowPatterns = listOf(
+            "strcpy" to "Use of unsafe string copy function",
+            "strcat" to "Use of unsafe string concatenation function",
+            "gets" to "Use of unsafe input function",
+            "sprintf" to "Use of unsafe string formatting function",
+            "scanf" to "Use of unsafe input parsing function",
+            "vsprintf" to "Use of unsafe variable string formatting function"
+        )
+        
+        for ((pattern, description) in bufferOverflowPatterns) {
+            if (content.contains(pattern.toByteArray())) {
+                return Vulnerability(
+                    type = VulnerabilityType.BUFFER_OVERFLOW,
+                    severity = Severity.HIGH,
+                    description = "Buffer overflow risk: $description",
+                    location = "Native library",
+                    recommendation = "Use secure alternatives like strncpy, strlcpy, or snprintf with proper bounds checking"
+                )
+            }
+        }
+        
+        return null
+    }
+    
+    private fun detectUseAfterFree(content: ByteArray): Vulnerability? {
+        // Check for patterns that might indicate use-after-free vulnerabilities
+        if (content.contains("free".toByteArray())) {
+            // This is a simplified check - in a real implementation, we would need more sophisticated analysis
+            return Vulnerability(
+                type = VulnerabilityType.USE_AFTER_FREE,
+                severity = Severity.HIGH,
+                description = "Potential use-after-free vulnerability detected",
+                location = "Native library",
+                recommendation = "Implement proper memory management and nullify pointers after freeing memory"
+            )
+        }
+        
+        return null
+    }
+    
+            "malloc" to "Dynamic memory allocation without bounds check",
+            "realloc" to "Memory reallocation without size validation"
+        )
+        
+        for ((pattern, description) in memoryCorruptionPatterns) {
+            if (content.contains(pattern.toByteArray())) {
+                return Vulnerability(
+                    type = VulnerabilityType.BUFFER_OVERFLOW,
+                    severity = Severity.HIGH,
+                    description = "Memory corruption risk: $description",
+                    location = "Native library",
+                    recommendation = "Implement proper bounds checking and use safer memory management functions"
+                )
+            }
+        }
+        
+        return null
+    }
+    
+    private fun detectBufferOverflow(content: ByteArray): Vulnerability? {
+        val bufferOverflowPatterns = listOf(
+            "strcpy" to "Use of unsafe string copy function",
+            "strcat" to "Use of unsafe string concatenation function",
+            "gets" to "Use of unsafe input function",
+            "sprintf" to "Use of unsafe string formatting function",
+            "scanf" to "Use of unsafe input parsing function",
+            "vsprintf" to "Use of unsafe variable string formatting function"
+        )
+        
+        for ((pattern, description) in bufferOverflowPatterns) {
+            if (content.contains(pattern.toByteArray())) {
+                return Vulnerability(
+                    type = VulnerabilityType.BUFFER_OVERFLOW,
+                    severity = Severity.HIGH,
+                    description = "Buffer overflow risk: $description",
+                    location = "Native library",
+                    recommendation = "Use secure alternatives like strncpy, strlcpy, or snprintf with proper bounds checking"
+                )
+            }
+        }
+        
+        return null
+    }
+    
+    private fun detectUseAfterFree(content: ByteArray): Vulnerability? {
+        // Check for patterns that might indicate use-after-free vulnerabilities
+        if (content.contains("free".toByteArray())) {
+            // This is a simplified check - in a real implementation, we would need more sophisticated analysis
+            return Vulnerability(
+                type = VulnerabilityType.USE_AFTER_FREE,
+                severity = Severity.HIGH,
+                description = "Potential use-after-free vulnerability detected",
+                location = "Native library",
+                recommendation = "Implement proper memory management and nullify pointers after freeing memory"
+            )
+        }
+        
+        return null
+    }
+    
     private fun analyzeLibrarySecurity(content: ByteArray): SecurityAnalysis {
         val securityRisks = mutableListOf<String>()
         val cryptoOps = mutableListOf<CryptoOperation>()
@@ -972,7 +1096,7 @@ class CodeAnalyzer(private val context: Context) {
 
     fun decompileMethod(dexFile: File, methodSignature: MethodSignature): String {
         val dexBackedDexFile = DexFileFactory.loadDexFile(dexFile, Opcodes.getDefault())
-        val options = BaksmaliOptions()
+        BaksmaliOptions()
         
         val targetClass = dexBackedDexFile.classes.find { 
             it.type == methodSignature.className 

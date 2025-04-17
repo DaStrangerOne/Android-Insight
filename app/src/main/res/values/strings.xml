@@ -47,4 +47,8 @@
     <dimen name="spacing_large">24dp</dimen>
     <dimen name="content_padding">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <string name="security_summary">Security Findings</string>
+    <string name="critical">Critical</string>
+    <string name="high">High</string>
+    <string name="medium">Medium</string>
 </resources>
