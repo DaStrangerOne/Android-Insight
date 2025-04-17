@@ -40,14 +40,14 @@
                 android:id="@+id/access_level_chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Chip.Info"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 tools:text="public" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/native_chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Chip.Info"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:text="native"
                 android:visibility="gone"
                 tools:visibility="visible" />
@@ -56,7 +56,7 @@
                 android:id="@+id/security_risk_chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Chip.Info"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 app:chipBackgroundColor="?attr/colorError"
                 android:textColor="?attr/colorOnError"
                 android:visibility="gone"

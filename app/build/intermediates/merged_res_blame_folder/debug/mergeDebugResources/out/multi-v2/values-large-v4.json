@@ -4,7 +4,7 @@
             "outputFile": "com.androidinsight.app-mergeDebugResources-50:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DawgN\\.gradle\\caches\\8.11.1\\transforms\\bd24629d92f0d31aafe2f04bad6f02a3\\transformed\\appcompat-1.6.1\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\DawgN\\.gradle\\caches\\8.11.1\\transforms\\1c02e401ba4743509de8d3fd7b19dc77\\transformed\\appcompat-1.6.1\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
@@ -14,20 +14,22 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\DawgN\\.gradle\\caches\\8.11.1\\transforms\\5c3482af9893585f4b64ec769efab836\\transformed\\material-1.11.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\DawgN\\.gradle\\caches\\8.11.1\\transforms\\2b1ad315979cddf9b59a11e2d2ee1c99\\transformed\\material-1.6.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
-                        "startLines": "2,3,4,5",
+                        "startLines": "2,3,4,10",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "55,169,285,407",
-                        "endColumns": "113,115,121,133",
-                        "endOffsets": "164,280,402,536"
+                        "startOffsets": "55,177,311,752",
+                        "endLines": "2,3,9,15",
+                        "endColumns": "121,133,10,10",
+                        "endOffsets": "172,306,747,1190"
                     },
                     "to": {
-                        "startLines": "11,12,13,14",
+                        "startLines": "11,12,13,19",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "752,866,982,1104",
-                        "endColumns": "113,115,121,133",
-                        "endOffsets": "861,977,1099,1233"
+                        "startOffsets": "752,874,1008,1449",
+                        "endLines": "11,12,18,24",
+                        "endColumns": "121,133,10,10",
+                        "endOffsets": "869,1003,1444,1887"
                     }
                 }
             ]

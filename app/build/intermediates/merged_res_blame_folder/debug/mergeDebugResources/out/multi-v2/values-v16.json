@@ -4,7 +4,7 @@
             "outputFile": "com.androidinsight.app-mergeDebugResources-50:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DawgN\\.gradle\\caches\\8.11.1\\transforms\\c60109b26cbe4e59998e9a5f44e61d8b\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\DawgN\\.gradle\\caches\\8.11.1\\transforms\\ea4e7aa03b3a0b39e872cadfca0341fe\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\DawgN\\.gradle\\caches\\8.11.1\\transforms\\bd24629d92f0d31aafe2f04bad6f02a3\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\DawgN\\.gradle\\caches\\8.11.1\\transforms\\1c02e401ba4743509de8d3fd7b19dc77\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
