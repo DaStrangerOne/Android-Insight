@@ -2,9 +2,9 @@
 buildscript {
     ext {
         // Specify Java version compatibility
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-        jvmTarget = '17'
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+        jvmTarget = '21'
         
         // Define versions for dependencies
         kotlin_version = '1.9.22'
