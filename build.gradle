@@ -4,20 +4,21 @@ buildscript {
         // Specify Java version compatibility
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        jvmTarget = '17'
+        
+        // Define versions for dependencies
+        kotlin_version = '1.9.22'
+        nav_version = '2.7.7'
     }
 }
 plugins {
-    id 'com.android.application' version '8.1.0' apply false
-    id 'com.android.library' version '8.1.0' apply false
+    id 'com.android.application' version '8.2.2' apply false
+    id 'com.android.library' version '8.2.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.9.22' apply false
+    id 'androidx.navigation.safeargs.kotlin' version '2.7.7' apply false
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+// Remove allprojects block as it's not needed in the root build.gradle
 
 // NOTE: Do not place your application dependencies here; they belong
 // in the individual module build.gradle files
