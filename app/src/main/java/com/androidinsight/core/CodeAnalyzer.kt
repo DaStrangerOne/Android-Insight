@@ -1,13 +1,11 @@
 package com.androidinsight.core
 
 import android.content.Context
+import org.jf.baksmali.BaksmaliOptions
+import org.jf.dexlib2.DexFileFactory
+import org.jf.dexlib2.Opcodes
 import java.io.File
 import java.util.zip.ZipFile
-import org.jf.dexlib2.DexFileFactory
-import org.jf.dexlib2.iface.ClassDef
-import org.jf.dexlib2.Opcodes
-import org.jf.baksmali.Adaptors.ClassDefinition
-import org.jf.baksmali.BaksmaliOptions
 
 class CodeAnalyzer(private val context: Context) {
     data class MethodSignature(
@@ -48,7 +46,8 @@ class CodeAnalyzer(private val context: Context) {
         val variableDefinitions: Map<String, List<String>>,
         val variableUses: Map<String, List<String>>,
         val taintSources: List<String>,
-        val taintSinks: List<String>
+        val taintSinks: List<String>,
+        val dataFlows: MutableList<Pair<String, String>>
     )
 
     data class CrossReference(
@@ -511,12 +510,12 @@ class CodeAnalyzer(private val context: Context) {
                 }
                 }
             }
-        }
+
         
         // Also analyze symbol dependencies
         val symbolProcess = ProcessBuilder("readelf", "-s", "--wide", "--dyn-syms", libFile.absolutePath).start()
-        symbolProcess.inputStream.bufferedReader().useLines { lines ->
-            lines.forEach { line ->
+    symbolProcess.inputStream.bufferedReader().useLines { lines ->
+        lines.forEach { line ->
                 if (line.contains("UND")) {
                     val parts = line.trim().split("\\s+".toRegex())
                     if (parts.size >= 8 && parts[4] == "UND") {
@@ -996,26 +995,7 @@ class CodeAnalyzer(private val context: Context) {
         
         return null
     }
-    
-            "malloc" to "Dynamic memory allocation without bounds check",
-            "realloc" to "Memory reallocation without size validation"
-        )
-        
-        for ((pattern, description) in memoryCorruptionPatterns) {
-            if (content.contains(pattern.toByteArray())) {
-                return Vulnerability(
-                    type = VulnerabilityType.BUFFER_OVERFLOW,
-                    severity = Severity.HIGH,
-                    description = "Memory corruption risk: $description",
-                    location = "Native library",
-                    recommendation = "Implement proper bounds checking and use safer memory management functions"
-                )
-            }
-        }
-        
-        return null
-    }
-    
+
     private fun detectBufferOverflow(content: ByteArray): Vulnerability? {
         val bufferOverflowPatterns = listOf(
             "strcpy" to "Use of unsafe string copy function",
@@ -1148,7 +1128,7 @@ private fun detectVulnerabilities(content: ByteArray): List<String> {
     }
 
     // Check for null pointer dereference
-    if (content.contains("->"u8.toByteArray()) && !content.contains("null".toByteArray())) {
+    if (content.contains("->".toByteArray()) && !content.contains("null".toByteArray())) {
         vulnerabilities.add("Potential null pointer dereference: Use of -> operator without null checks")
     }
 
