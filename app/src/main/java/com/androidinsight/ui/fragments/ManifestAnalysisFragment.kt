@@ -38,6 +38,13 @@ class ManifestAnalysisFragment : Fragment() {
         setupRecyclerViews()
         setupTabLayout()
         observeViewModel()
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        permissionAdapter.clear()
+        componentAdapter.clear()
+    }
     }
 
     private fun setupRecyclerViews() {
