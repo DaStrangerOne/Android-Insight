@@ -42,6 +42,11 @@ class CodeAnalysisFragment : Fragment() {
         observeViewModel()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun setupCodeAnalyzer() {
         codeAnalyzer = CodeAnalyzer(requireContext())
     }
@@ -60,6 +65,7 @@ class CodeAnalysisFragment : Fragment() {
 
         binding.codeAnalysisTabs.addTab(binding.codeAnalysisTabs.newTab().setText("Methods"))
         binding.codeAnalysisTabs.addTab(binding.codeAnalysisTabs.newTab().setText("Native Libraries"))
+        libraryAdapter.clear()
     }
 
     private fun setupRecyclerViews() {

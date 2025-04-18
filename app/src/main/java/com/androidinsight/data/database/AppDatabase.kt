@@ -25,38 +25,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun analysisResultDao(): AnalysisResultDao
 }
 
-class Converters {
-    private val gson = Gson()
 
-    @TypeConverter
-    fun fromStringList(value: List<String>): String {
-        return gson.toJson(value)
-    }
-
-    @TypeConverter
-    fun toStringList(value: String): List<String> {
-        val listType = object : TypeToken<List<String>>() {}.type
-        return gson.fromJson(value, listType)
-    }
-
-    @TypeConverter
-    fun fromMap(value: Map<String, String>): String {
-        return gson.toJson(value)
-    }
-
-    @TypeConverter
-    fun toMap(value: String): Map<String, String> {
-        val mapType = object : TypeToken<Map<String, String>>() {}.type
-        return gson.fromJson(value, mapType)
     }
     
-    @TypeConverter
-    fun fromDate(date: Date?): Long? {
-        return date?.time
-    }
 
-    @TypeConverter
-    fun toDate(timestamp: Long?): Date? {
-        return timestamp?.let { Date(it) }
-    }
 }
