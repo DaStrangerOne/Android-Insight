@@ -10,6 +10,7 @@ import com.androidinsight.data.database.entities.AnalysisResult
 import com.androidinsight.data.database.entities.ApkInfo
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.util.Date
 
 @Database(
     entities = [
@@ -49,7 +50,7 @@ class Converters {
         val mapType = object : TypeToken<Map<String, String>>() {}.type
         return gson.fromJson(value, mapType)
     }
-    
+
     @TypeConverter
     fun fromDate(date: Date?): Long? {
         return date?.time

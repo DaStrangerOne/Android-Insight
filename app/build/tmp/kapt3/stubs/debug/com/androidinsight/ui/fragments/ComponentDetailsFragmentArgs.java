@@ -32,6 +32,20 @@ public final class ComponentDetailsFragmentArgs implements androidx.navigation.N
         return null;
     }
     
+    @kotlin.jvm.JvmStatic()
+    @org.jetbrains.annotations.NotNull()
+    public static final com.androidinsight.ui.fragments.ComponentDetailsFragmentArgs fromBundle(@org.jetbrains.annotations.NotNull()
+    android.os.Bundle bundle) {
+        return null;
+    }
+    
+    @kotlin.jvm.JvmStatic()
+    @org.jetbrains.annotations.NotNull()
+    public static final com.androidinsight.ui.fragments.ComponentDetailsFragmentArgs fromSavedStateHandle(@org.jetbrains.annotations.NotNull()
+    androidx.lifecycle.SavedStateHandle savedStateHandle) {
+        return null;
+    }
+    
     public final long component1() {
         return 0L;
     }
@@ -51,20 +65,6 @@ public final class ComponentDetailsFragmentArgs implements androidx.navigation.N
     public boolean equals(@org.jetbrains.annotations.Nullable()
     java.lang.Object other) {
         return false;
-    }
-    
-    @kotlin.jvm.JvmStatic()
-    @org.jetbrains.annotations.NotNull()
-    public static final com.androidinsight.ui.fragments.ComponentDetailsFragmentArgs fromBundle(@org.jetbrains.annotations.NotNull()
-    android.os.Bundle bundle) {
-        return null;
-    }
-    
-    @kotlin.jvm.JvmStatic()
-    @org.jetbrains.annotations.NotNull()
-    public static final com.androidinsight.ui.fragments.ComponentDetailsFragmentArgs fromSavedStateHandle(@org.jetbrains.annotations.NotNull()
-    androidx.lifecycle.SavedStateHandle savedStateHandle) {
-        return null;
     }
     
     @java.lang.Override()

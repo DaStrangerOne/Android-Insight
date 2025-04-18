@@ -4,7 +4,7 @@
             "outputFile": "com.androidinsight.app-mergeDebugResources-50:/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DawgN\\OneDrive\\Desktop\\tttttttt\\.gradle\\caches\\8.11.1\\transforms\\c70ea16ad225b1257a89c1d446e04ce3\\transformed\\appcompat-1.6.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\DawgN\\OneDrive\\Desktop\\tttttttt\\.gradle\\caches\\8.11.1\\transforms\\f9d60c6be46b270fe1de6ebaa4e18751\\transformed\\appcompat-1.6.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\DawgN\\OneDrive\\Desktop\\tttttttt\\.gradle\\caches\\8.11.1\\transforms\\a7f34b99db2c3fafd6b960b5987fbb51\\transformed\\material-1.6.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\DawgN\\OneDrive\\Desktop\\tttttttt\\.gradle\\caches\\8.11.1\\transforms\\58f49962bd4e527d0d9a00255f3cc4e0\\transformed\\material-1.6.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",

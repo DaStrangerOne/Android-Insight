@@ -1,7 +1,7 @@
 package com.androidinsight.core
 
 import android.content.Context
-import org.jf.baksmali.BaksmaliOptions
+import org.jf. baksmali.BaksmaliOptions
 import org.jf.dexlib2.DexFileFactory
 import org.jf.dexlib2.Opcodes
 import java.io.File

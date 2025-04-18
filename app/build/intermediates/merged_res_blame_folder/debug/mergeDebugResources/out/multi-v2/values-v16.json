@@ -4,17 +4,7 @@
             "outputFile": "com.androidinsight.app-mergeDebugResources-50:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DawgN\\OneDrive\\Desktop\\tttttttt\\.gradle\\caches\\8.11.1\\transforms\\0714afbe461fb4b03768d4c6fa355186\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\DawgN\\OneDrive\\Desktop\\tttttttt\\.gradle\\caches\\8.11.1\\transforms\\c70ea16ad225b1257a89c1d446e04ce3\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\DawgN\\OneDrive\\Desktop\\tttttttt\\.gradle\\caches\\8.11.1\\transforms\\f9d60c6be46b270fe1de6ebaa4e18751\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -30,6 +20,16 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\DawgN\\OneDrive\\Desktop\\tttttttt\\.gradle\\caches\\8.11.1\\transforms\\ec46ee50ecb0990c5ea2f7a117d330a7\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
                     }
                 }
             ]
